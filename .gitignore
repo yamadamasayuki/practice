@@ -1,0 +1,21 @@
+# NPM
+/node_modules
+
+# bower
+/bower_components
+
+# Utility
+/diff/
+/delivery/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# OS X
+.DS_Store
+
+# WORDPRESS
+/htdocs/wp/
+!/htdocs/wp/wp-content/themes/dhf/
+!/htdocs/wp/wp/wp-content/uploads/
