@@ -14,8 +14,3 @@
 
 # OS X
 .DS_Store
-
-# WORDPRESS
-/htdocs/wp/
-!/htdocs/wp/wp-content/themes/dhf/
-!/htdocs/wp/wp/wp-content/uploads/
