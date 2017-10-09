@@ -29,17 +29,18 @@ gulp.task('sass', function(){
 });
 
 gulp.task('js', function(){
-	gulp.src(['./src/js/**/*.js', '!src/js/top.js', '!src/js/plugins/*.js'])
+	// gulp.src(['./src/js/**/*.js', '!src/js/top.js', '!src/js/plugins/*.js'])
+	gulp.src(['./src/js/**/*.js', '!src/js/plugins/*.js'])
 		.pipe(plumber())
 		.pipe(babel( {presets:['es2015']} ))
-		.pipe(concat('common.js'))
+		// .pipe(concat('common.js'))
 		// .pipe(uglify())
 		.pipe(gulp.dest('./htdocs/common/js/'))
-	gulp.src('./src/js/top.js')
-		.pipe(plumber())
-		.pipe(babel( {presets:['es2015']} ))
-		// .pipe(uglify())
-		.pipe(gulp.dest('./htdocs/common/js/'))
+	// gulp.src('./src/js/top.js')
+	// 	.pipe(plumber())
+	// 	.pipe(babel( {presets:['es2015']} ))
+	// 	// .pipe(uglify())
+	// 	.pipe(gulp.dest('./htdocs/common/js/'))
 });
 
 

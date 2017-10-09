@@ -1,0 +1,90 @@
+// BASE.SCSS
+
+/* Sticky Footer
+================================================== */
+html, body {
+	height: 100%;
+	margin: 0;
+	min-width: 320px;
+}
+
+// html {
+// 	overflow: hidden;
+// }
+
+
+/* BODY
+================================================== */
+body {
+	min-width: 320px;
+	width: 100%;
+	@include fz(13,26);
+	@include JPfont;
+	font-feature-settings: "pkna";//「かな」のみプロポーショナルメトリクスを有効<-Safari10対策
+
+	@include pc {
+		@include fz(15,30);
+	}
+
+	//For Analysis tag
+	> iframe,
+	> img,
+	> div:not([class]) > iframe,
+	> div:not([class]) > img {
+		display: none;
+	}
+}
+
+p:not(.is-nonspace),
+dt:not(.is-nonspace),
+dd:not(.is-nonspace),
+span:not(.is-nonspace),
+a:not(.is-nonspace),
+li:not(.is-nonspace) {
+	letter-spacing: 0.05em;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}//a
+
+li {
+	list-style-type: none;
+}
+
+figure {
+	text-align: center;
+}
+
+img {
+	vertical-align: top;
+}
+
+img:not(.cover),
+video:not(.cover) {
+	max-width: 100%;
+}
+
+img.cover,
+video.cover {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	object-fit: cover;
+}
+
+button {
+	@include JPfont;
+	border-radius: 0;
+}
+
+input,
+textarea {
+	border-radius: 0;
+
+}

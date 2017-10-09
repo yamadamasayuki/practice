@@ -1,0 +1,52 @@
+// UTILITY.SCSS
+
+/* PC or SP
+------------------------------ */
+.is-pc {
+	display: none !important;
+
+	@include pc {
+		display: block !important;
+	}
+}
+
+.is-sp {
+	display: block !important;
+
+	@include pc {
+		display: none !important;
+	}
+}
+
+br.is-pc,
+span.is-pc {
+	display: none !important;
+
+	@include pc {
+		display: inline !important;
+	}
+}
+
+br.is-sp,
+span.is-sp {
+	display: inline !important;
+
+	@include pc {
+		display: none !important;
+	}
+}
+
+
+
+
+.u-w-auto {
+	width: auto !important;
+}
+
+.u-alpha10 {
+	opacity: 1;
+}
+
+.u-alpha4 {
+	opacity: .4;
+}

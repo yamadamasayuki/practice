@@ -1,0 +1,303 @@
+//@mixin fz($size)
+//==================================================
+@mixin fz($size:16,$lh:24) {
+	font-size: $size * 1px;
+	font-size: ( $size / 16 ) * 1rem;
+	line-height: $lh / $size;
+}
+
+//@mixin Noto
+//==================================================
+
+//Japanese
+@mixin JPfont {
+	font-family: 'Yu Gothic Medium', 'Yu Gothic', 'YuGothic', 'Hiragino Kaku Gothic ProN', 'HiraKakuProN-W3', 'Meiryo', sans-serif;
+	font-style: normal;
+}
+
+
+
+//Oswald Light
+@mixin OswaldL {
+  font-family: 'Oswald', sans-serif;
+	font-style: normal;
+	font-weight: 300;
+}
+
+//Oswald Reguler
+@mixin OswaldR {
+	font-family: 'Oswald', sans-serif;
+	font-style: normal;
+	font-weight: 400;
+}
+
+//Oswald Medium
+@mixin OswaldM {
+	font-family: 'Oswald', sans-serif;
+	font-style: normal;
+	font-weight: 500;
+}
+
+//Oswald Bold
+@mixin OswaldB {
+  font-family: 'Oswald', sans-serif;
+	font-style: normal;
+	font-weight: 700;
+}
+
+
+
+//@mixin mobile
+//==================================================
+@mixin mobile {
+	@media screen and (max-width: 768px) {
+		@content;
+	}
+}
+@mixin pc {
+	@media screen and (min-width: 769px) {
+		@content;
+	}
+}
+
+//@mixin e($name)/m($name)
+//==================================================
+@mixin e($name) {
+	@at-root &__#{$name} {
+		@content;
+	}
+}
+
+@mixin m($name) {
+	@at-root &--#{$name} {
+		@content;
+	}
+}
+
+//@mixin imgreplace
+//==================================================
+@mixin imgreplace {
+	overflow: hidden;
+	text-indent: 110%;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+
+//@mixin clearfix
+//==================================================
+@mixin clearfix {
+	&:after {
+		content: "";
+		clear: both;
+		display: block;
+		height: 0;
+	}
+}
+
+
+
+//@mixin gradient
+//==================================================
+
+@mixin OtoR {
+	background-image: $OtoR;
+	background-repeat: no-repeat;
+	background-size: 200% 100%;
+	background-position: left center;
+}
+
+@mixin RtoO {
+	background-image: $RtoO;
+	background-repeat: no-repeat;
+	background-size: 200% 100%;
+	background-position: left center;
+}
+
+@mixin grd-hover {
+	@include pc {
+		&:hover {
+			background-position: right center;
+		}
+	}//pc
+}
+
+
+
+//@mixin btn
+//==================================================
+
+@mixin btn($txt-color:#000, $line-color:rgba(0, 0, 0, .5)) {
+	display: block;
+	width: 100%;
+	padding: 8px 0;
+	border: solid 1px $line-color;
+	position: relative;
+
+	@include OswaldR;
+	@include fz(14,22);
+	color: $txt-color;
+	text-align: center;
+	letter-spacing: .2em;
+}
+
+@mixin outline($btn-color:#000) {
+	@include pc {
+		&:after {
+			content: '';
+			display: block;
+			width: calc(100% + 2px);
+			height: calc(100% + 2px);
+			margin: -1px;
+			background-color: transparent;
+			border: solid 1px transparent;
+			transform-origin: left center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: .2s $ease-in-out-cubic;
+			transform: translate(0,0);
+		}
+
+		&:hover {
+			&:after {
+				border: solid 1px $btn-color;
+				transform: translate(-5px,-5px);
+			}
+		}//hover
+	}//pc
+}
+
+@mixin btn-mask($btn-color:#000) {
+	@include pc {
+		&:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: $btn-color;
+			transform-origin: left center;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: .2s $ease-in-out-cubic;
+			transform: scale(0,1);
+		}
+
+		&:hover {
+			&:before {
+				transform: scale(1,1);
+			}
+		}//hover
+	}//pc
+}
+
+@mixin border {
+	@include pc {
+		&:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			border: solid 5px $main-color;
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0;
+			visibility: hidden;
+			transition: .2s $ease-in-out-cubic;
+			transform: scale(1);
+		}
+	}//pc
+}
+
+
+//@mixin hover
+//==================================================
+
+@mixin alpha {
+	// display: block;
+	transition: 0.3s ease;
+
+	@include pc {
+		&:hover {
+			opacity: 0.8;
+		}
+	}//pc
+}//alpha
+
+@mixin hoverBg($bgColor:#fff,$afterColor:currentcolor) {
+	// position: relative;
+	transition: .3s ease;
+
+	@include pc {
+		&:before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 100%;
+			background-color: $bgColor;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+			transform: scale(0,1);
+			transition: .2s $ease-in-out-cubic;
+			transform-origin: left center;
+		}
+
+		&:hover {
+			color: $afterColor;
+			p {
+				color: $afterColor;
+			}
+
+			&:before {
+				transform: scale(1,1);
+				// animation: hover .5s 1 $ease-in-out-cubic;
+			}
+		}//hover
+	}//pc
+}//hoverBg
+
+
+
+//@mixin transform
+//==================================================
+
+@mixin scale {
+	transform: scale(1,1);
+	transform-origin: left center;
+}
+
+@mixin scaleL {
+	transform: scale(0,1);
+	transform-origin: left center;
+}
+
+@mixin scaleR {
+	transform: scale(1,1);
+	transform-origin: right center;
+}
+
+@mixin mask($mask-color:currentcolor) {
+	position: relative;
+	transform-origin: left center;
+
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		background-color: $mask-color;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 50;
+
+		// transition: .3s ease;
+		// transition-delay: .1s;
+		transform: scale(1,1);
+		transform-origin: right center;
+	}
+}
